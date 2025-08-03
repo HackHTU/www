@@ -1,0 +1,20 @@
+@import url('https://cdn-font.hyperos.mi.com/font/css?family=MiSans_VF:VF:Chinese_Simplify,Latin&display=swap');
+
+@import 'tailwindcss';
+
+@theme {
+    --color-theme: #71cbff; /* Theme color */
+    --color-primary: light-dark(#171717, #fafafa); /* Primary color */
+    --color-secondary: light-dark(#d4d4d4, #404040); /* Secondary color */
+    --color-background: light-dark(#fafafa, #171717); /* Background color */
+
+    --font-sans:
+        'MiSans VF', 'MiSans', ui-sans-serif, system-ui, sans-serif,
+        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+        'Noto Color Emoji';
+}
+
+:root {
+    color-scheme: light dark;
+    @apply bg-background text-primary;
+}
