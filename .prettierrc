@@ -8,9 +8,7 @@
     "bracketSpacing": true,
     "arrowParens": "avoid",
     "bracketSameLine": true,
-    "plugins": [
-        "prettier-plugin-tailwindcss"
-    ],
+    "plugins": ["prettier-plugin-tailwindcss"],
     "overrides": [
         {
             "files": "*.svg",
