@@ -5,7 +5,7 @@ import pluginVue from 'eslint-plugin-vue';
 
 import eslintConfigPrettier from 'eslint-config-prettier';
 
-export default [
+export default tseslint.config(
     js.configs.recommended,
     ...tseslint.configs.recommended,
     ...pluginVue.configs['flat/recommended'],
@@ -23,7 +23,6 @@ export default [
     {
         rules: {
             'vue/multi-word-component-names': 'off',
-            'vue/no-async-in-computed-properties': 'off',
         },
-    },
-];
+    }
+);
