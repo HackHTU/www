@@ -38,7 +38,7 @@ const MAIL = import.meta.env.VITE_MAIL;
                         >师韵</a
                     >
                 </li>
-                <li><span class="text-xs opacity-30 align-super">加入链接</span></li>
+                <li><span class="align-super text-xs opacity-30">加入链接</span></li>
             </ul>
             <ul class="space-y-1">
                 <li class="text-lg font-bold">资源</li>
@@ -90,7 +90,9 @@ const MAIL = import.meta.env.VITE_MAIL;
                     <a :href="GITHUB_URL" target="_blank" rel="noopener noreferrer">Github 团队</a>
                 </li>
                 <li>
-                    <a :href="'mailto:' + MAIL" target="_blank" rel="noopener noreferrer">Email 邮箱</a>
+                    <a :href="'mailto:' + MAIL" target="_blank" rel="noopener noreferrer"
+                        >Email 邮箱</a
+                    >
                 </li>
             </ul>
         </div>

@@ -45,19 +45,19 @@ const GITHUB_URL = import.meta.env.VITE_GITHUB_URL;
             target="_blank"
             rel="noopener noreferrer">
             <div
-                class=" border-primary/10 h-60 border hover:bg-green-100 bg-size-[80%] bg-bottom bg-no-repeat pt-6 pl-3 md:h-100">
+                class="border-primary/10 h-60 border bg-size-[80%] bg-bottom bg-no-repeat pt-6 pl-3 hover:bg-green-100 md:h-100">
                 <span class="text-2xl font-bold">开发者</span>
             </div>
             <div
-                class=" border-primary/10 h-60 border hover:bg-blue-100 bg-size-[100%] bg-position-[center_bottom_-4em] bg-no-repeat pt-6 pl-3 md:h-100">
+                class="border-primary/10 h-60 border bg-size-[100%] bg-position-[center_bottom_-4em] bg-no-repeat pt-6 pl-3 hover:bg-blue-100 md:h-100">
                 <span class="text-2xl font-bold">设计师</span>
             </div>
             <div
-                class=" border-primary/10 h-60 border hover:bg-red-100 bg-size-[80%] bg-bottom bg-no-repeat pt-6 pl-3 md:h-100">
+                class="border-primary/10 h-60 border bg-size-[80%] bg-bottom bg-no-repeat pt-6 pl-3 hover:bg-red-100 md:h-100">
                 <span class="text-2xl font-bold">插画师</span>
             </div>
             <div
-                class=" border-primary/10 h-60 border hover:bg-purple-100 bg-size-[80%] bg-bottom bg-no-repeat pt-6 pl-3 md:h-100">
+                class="border-primary/10 h-60 border bg-size-[80%] bg-bottom bg-no-repeat pt-6 pl-3 hover:bg-purple-100 md:h-100">
                 <span class="text-2xl font-bold">还有你...</span>
             </div>
         </a>

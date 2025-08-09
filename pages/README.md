@@ -1,9 +1,8 @@
-这里是除 Home 以外的页面，按照以下格式：
+这里是除 Home 以外的页面，按照以下格式处理页面：
 
 pages/
-├─ page/
-│ ├─ src/  
+├─ page/ # 示例页面
+│ ├─ index.html # 页面 HTML
+│ ├─ main.ts # 页面入口文件
+│ ├─ src/ # 页面组件
 │ │ ├─ App.vue
-│ │ └─ \*.vue
-│ ├─ index.html
-│ └─ main.ts
