@@ -1,3 +1,9 @@
+<script lang="ts" setup>
+const TELEGRAM_URL = import.meta.env.VITE_TELEGRAM_URL;
+const GITHUB_URL = import.meta.env.VITE_GITHUB_URL;
+const DISCORD_URL = import.meta.env.VITE_DISCORD_URL;
+const MAIL = import.meta.env.VITE_MAIL;
+</script>
 <template>
     <footer
         class="bg-primary dark:text-primary text-background flex w-full max-w-dvw items-start justify-between gap-5 rounded-br-3xl rounded-bl-3xl px-6 pt-6 pb-10 select-none dark:bg-neutral-800">
@@ -13,29 +19,33 @@
             </svg>
             <span class="font-extralight">HackHTU Team</span>
             <span class="font-extralight"
-                >Powered By <span class="font-bold">Cloudflare</span></span
+                >Powered By
+                <a
+                    href="https://www.cloudflare.com/"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    class="font-medium"
+                    >Cloudflare</a
+                ></span
             >
         </div>
 
         <div class="flex flex-wrap gap-10">
             <ul class="space-y-1">
-                <li class="text-lg font-bold">友链</li>
+                <li class="text-lg font-bold">友链 & 赞助</li>
                 <li>
-                    <a
-                        href="https://xhand.edu.deal/"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                    <a href="https://xhand.edu.deal/" target="_blank" rel="noopener noreferrer"
                         >师韵</a
                     >
                 </li>
-                <li><span class="opacity-30">加入链接</span></li>
+                <li><span class="text-xs opacity-30 align-super">加入链接</span></li>
             </ul>
             <ul class="space-y-1">
                 <li class="text-lg font-bold">资源</li>
-                <li><a href="pages/about/">关于</a></li>
-                <li><a href="pages/hacknet/">HackNet</a></li>
-                <li><a href="pages/resource/pp.html">隐私协议</a></li>
-                <li><a href="pages/resource/tos.html">服务条款</a></li>
+                <li><a href="/pages/about/">关于</a></li>
+                <li><a href="/pages/hacknet/">HackNet</a></li>
+                <li><a href="/pages/resource/pp.html">隐私协议</a></li>
+                <li><a href="/pages/resource/tos.html">服务条款</a></li>
             </ul>
             <ul class="space-y-1">
                 <li class="text-lg font-bold">开源</li>
@@ -67,36 +77,20 @@
             <ul class="space-y-1">
                 <li class="text-lg font-bold">媒体</li>
                 <li>
-                    <a
-                        href="https://t.me/+UkcPLjqd8y9mYmU1"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                    <a :href="TELEGRAM_URL" target="_blank" rel="noopener noreferrer"
                         >Telegram 群组</a
                     >
                 </li>
                 <li>
-                    <a
-                        href="https://discord.gg/jaJ54pYjGm"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                    <a :href="DISCORD_URL" target="_blank" rel="noopener noreferrer"
                         >Discord 服务器</a
                     >
                 </li>
                 <li>
-                    <a
-                        href="https://github.com/HackHTU"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        >Github 团队</a
-                    >
+                    <a :href="GITHUB_URL" target="_blank" rel="noopener noreferrer">Github 团队</a>
                 </li>
                 <li>
-                    <a
-                        href="mailto:hackhtu@proton.me"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        >Email 邮箱</a
-                    >
+                    <a :href="'mailto:' + MAIL" target="_blank" rel="noopener noreferrer">Email 邮箱</a>
                 </li>
             </ul>
         </div>

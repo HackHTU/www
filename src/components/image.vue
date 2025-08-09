@@ -20,16 +20,8 @@ const isShowPreview = ref(false);
                 class="fixed top-0 left-0 z-50 flex h-dvh w-dvw items-center justify-center bg-neutral-600"
                 @click.self="isShowPreview = false">
                 <div class="relative max-h-full max-w-full text-white">
-                    <img
-                        :src="src"
-                        :alt="alt"
-                        class="max-h-full max-w-full object-contain" />
-                    <a
-                        class="absolute top-4 left-4 cursor-pointer"
-                        :href="src"
-                        download>
-                        下载
-                    </a>
+                    <img :src="src" :alt="alt" class="max-h-full max-w-full object-contain" />
+                    <a class="absolute top-4 left-4 cursor-pointer" :href="src" download> 下载 </a>
                     <button
                         class="absolute top-4 right-4 cursor-pointer"
                         @click="isShowPreview = false">

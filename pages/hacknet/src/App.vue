@@ -1,58 +1,91 @@
 <script setup lang="ts">
 import Footer from '@/components/Footer.vue';
+import Nav from '@/components/Nav.vue';
+import Collapse from '@/components/Collapse.vue';
+import Lab from './Lab.vue';
+import Session from './Session.vue';
+
+import { ref } from 'vue';
+const GITHUB_URL = import.meta.env.VITE_GITHUB_URL;
+
+interface CollapseContent {
+    title: string;
+    content: string;
+}
+
+let collapses = ref<CollapseContent[]>([
+    {
+        title: `什么是 HackNet？`,
+        content: `HackNet 是 HackHTU 的实验室、会议和课程的集合。
+
+        它旨在为 HackHTU 的成员提供一个学习和实践的平台，帮助他们提升技能，参与项目，并与其他成员交流。
+
+        通过 HackNet，我们希望能够培养出更多优秀的 HackHTU 建造者。`,
+    },
+    {
+        title: `怎么参加培训？`,
+        content: `我们的视频托管到 Wistia 平台，您可以直接点击视频在平台上观看和学习。
+
+        同时，我们将所有的代码和资源开源到 GitHub 上，您可以自由下载和使用。
+        `,
+    },
+    {
+        title: `为什么我打不开？`,
+        content: `我们将资源托管到国外的第三方平台，这些第三方平台都是安全的，但是可能会受到网络限制，导致无法访问。
+
+        建议您使用 VPN 或者代理工具来访问这些资源。
+        `,
+    },
+    {
+        title: `上面的资料我可以下载吗？`,
+        content: `我们的视频和资料都是开源的，您可以自由下载和使用，没有版权和付费限制。
+
+        不过，请注意遵循相应的开源协议和版权声明。
+        `,
+    },
+    {
+        title: `我也想录制 HackNet？`,
+        content: `欢迎您参与 HackNet 的录制工作！
+
+        主题不限，内容不限，计算机相关的内容之外也是没有问题的，您可以录制任何相关的内容。
+
+        您可以与我们联系，获取更多的录制资源和支持，我们会尽力提供帮助（例如录音，剪辑，发布）。
+        `,
+    },
+    {
+        title: `一起共同建设 HackHTU？`,
+        content: `我们欢迎所有人参与到 HackHTU 的建设中来！
+
+        无论您是想要贡献代码、提供方案，还是分享您的想法和建议，都可以与我们联系。
+
+        我们相信，只有通过共同的努力，才能够建设一个更好的 HackHTU。
+        `,
+    },
+]);
 </script>
 
 <template>
-    <nav class="fixed top-2 z-50 flex w-full justify-center">
-        <div
-            class="text-background dark:text-primary mx-2 flex w-200 max-w-full items-center justify-between rounded-2xl border border-neutral-300 bg-neutral-900 select-none">
-            <a href="/"
-                ><svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-14 w-20"
-                    fill="none"
-                    viewBox="0 0 128 128">
-                    <path
-                        fill="currentColor"
-                        d="M20.9 40.5c2.7 0 4.5.3 5.6 1 1.2.6 1.9 1.3 2.1 2l.5 1a160.5 160.5 0 0 0 0 6.2V56a274.3 274.3 0 0 0 .1 6h10l-1-16.3V45c0-.4 0-.9.3-1.4.4-.6 1-1.1 2-1.6s2.4-.8 4.4-.9c2 0 3.5.1 4.5.5s1.9.8 2.3 1.4c.5.5.8 1 .8 1.5l.2.6 1.6 37v.8a5 5 0 0 1-.3 2c-.3.8-1 1.4-2 2a9 9 0 0 1-4.4.6c-2 0-3.5-.3-4.6-.9-1.1-.5-2-1-2.4-1.7a5 5 0 0 1-1-2.4l-.1-14.7-10.2.1.3 15.9-.2.6c0 .4-.3.8-.8 1.4-.4.4-1.2.9-2.2 1.2-1.1.4-2.7.5-4.7.4-2 0-3.7-.3-4.8-.8-1-.5-1.7-1-2.2-1.6-.4-.6-.6-1.1-.7-1.5l-.1-.8-.5-38V44c.1-.4.4-1 .8-1.4a4 4 0 0 1 2-1.5c1.2-.4 2.7-.7 4.7-.6ZM72.7 62l1.3.1c.5.1 1 .3 1.4.6.4.2.6.5.6 1 0 .4-.2.7-.5 1a4 4 0 0 1-1.2.6l-1.1.3h-.5L70 66a62 62 0 0 1 .3 7 289.6 289.6 0 0 1 0 10.8 2 2 0 0 1-.6 1.4 3 3 0 0 1-1.3.6h-2.2l-1.2-.4c-.4-.2-.8-.6-1.1-1.1-.3-.6-.4-1.4-.3-2.4v-3.4a119.6 119.6 0 0 0-.3-11.2V66a14.7 14.7 0 0 1-3.6-.2c-.6-.1-1.2-.3-1.7-.6s-.7-.6-.7-1.1c0-.5.1-.8.4-1l1.2-.6 1.2-.2h.5l11.5-.3h.6Zm9.3-.7c.4 0 .8 0 1.2.3.5.2.9.5 1.2 1 .4.5.5 1.2.5 2.2a338 338 0 0 1 0 6 83.2 83.2 0 0 0 .5 7c.2 1 .5 2 .8 2.5.3.6.7 1 1.2.9.5 0 .8-.4 1-1 .3-.7.5-1.5.5-2.5a30.4 30.4 0 0 0-.2-6.4 58.2 58.2 0 0 0-.5-4.3v-1.2c.1-.4.4-.8.8-1.1.5-.3 1.2-.6 2.2-.7 1 0 1.7 0 2.3.4.5.3 1 .7 1.1 1.1.3.5.4.9.5 1.3v.5l.2 1 .3 2.4a23 23 0 0 1-.4 7.1c-.3 1.2-.7 2.4-1.3 3.4-.6 1-1.5 1.9-2.5 2.5a7 7 0 0 1-4 1 8 8 0 0 1-4.1-.9c-1.1-.6-2-1.5-2.8-2.6-.7-1.1-1.2-2.3-1.6-3.7a26.7 26.7 0 0 1-1-8.2 95.2 95.2 0 0 1 .1-5.4c0-.7.3-1.3.6-1.6.4-.4.8-.7 1.2-.8l1.2-.3h1Zm2.7-18.8a8.8 8.8 0 0 1 5.4 1.8 9 9 0 0 1 1.8 1.8c.5.6.8 1.2.8 1.8 0 .5 0 1-.4 1.2-.2.3-.6.5-1 .7a6.4 6.4 0 0 1-1.7.2c-1 0-1.8-.1-2.3-.4-.5-.2-.8-.5-.9-.8a2 2 0 0 1-.2-.5l-.1-.5c-.1-.2-.2-.5-.5-.7-.2-.2-.5-.4-.8-.4-.4 0-.7.3-1 .8-.4.5-.6 1.1-.9 1.9l-.4 2c0 .7 0 1.3.2 2s.5 1.3.8 1.7c.4.5.8.7 1.3.7.8 0 1.2 0 1.4-.3l.2-.4v-.3l.5-.6c.3-.2.7-.4 1.3-.5.6-.2 1.4-.2 2.5-.2 1 0 1.8.2 2.1.4.4.2.6.5.6.8 0 .3 0 .6-.2.8 0 .2-.2.3-.2.3l-.5.6a11.7 11.7 0 0 1-4.3 2.4c-1 .4-2.3.5-3.6.5-2.6 0-4.7-.7-6.3-2.1A8.6 8.6 0 0 1 76 51a7 7 0 0 1 .6-3.5 9.4 9.4 0 0 1 5-4.3c1.1-.4 2.1-.6 3.2-.7Zm24.2 0a6 6 0 0 1 2.7.3c.8.2 1.3.5 1.4.8.1.4 0 .7-.2 1a4 4 0 0 1-.4.7l-.8.7-1.5 1.4-1.6 1.5-1.3 1.4-.6.5 6.6 4.6.4.3c.3.2.5.4.7.8.2.3.3.7.2 1 0 .4-.4.7-1 1-.8.4-1.4.5-2 .5l-1.8-.5-1.2-.7-.4-.3-4.7-3.3.3 3.4-.1.4c0 .3-.3.6-.7.9-.4.3-1.2.4-2.2.4-1.1 0-1.9-.1-2.4-.5s-.8-.7-1-1.1l-.2-.5v-.8a76.6 76.6 0 0 0-1.8-10c-.3-.9-.3-1.5-.1-2 .2-.4.4-.7.8-.8a3 3 0 0 1 1.1-.3h1.1l1.4.1c.5.1 1 .3 1.4.7.5.3.7.8.8 1.5a53.2 53.2 0 0 0 .5 2l4.6-4.3s.2 0 .5-.3c.3-.2.8-.4 1.5-.5Zm-44.8 0a12 12 0 0 1 5.8 1.2c.6.3 1.1.6 1.5 1l.8.3c.3 0 .5.2.6.5l.2.3.1.9a106.5 106.5 0 0 1 1 11c-.1.6-.4 1-.9 1.2a8 8 0 0 1-2.3.4h-1.7l-.6-.3-.2-.2c-.2.2-.6.3-1.2.4l-1.5.1h-.8l-1-.1-2.3-.6c-.9-.4-1.8-.8-2.7-1.5a8 8 0 0 1-2.2-2.5 8 8 0 0 1-.9-4c0-1.7.3-3 .9-4a7 7 0 0 1 2-2.4 8.8 8.8 0 0 1 4.5-1.7h.9Zm.9 2.9-.6-.2-.5.7a9.1 9.1 0 0 0-.8 7.6c.3.9.7 1.5 1.2 2 .5.4 1 .6 1.3.6.3 0 .6-.2.9-.4l.7-1 .4-1 .2-.4-.7-6.7c-.1-.2-.4-.4-.9-.6l-1.2-.6Z" /></svg
-            ></a>
+    <Nav title="HackNet" />
 
-            <span class="font-serif text-xl font-bold">HackNet</span>
-
-            <ul class="flex items-center justify-between gap-4 px-4">
-                <li>
-                    <a
-                        href="/"
-                        class="border-primary text-primary bg-background m-1 cursor-pointer rounded-xl border-2 px-2 py-1 font-semibold select-none hover:invert">
-                        Back
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
     <header class="relative flex h-dvh w-full items-center justify-center">
-        <div
-            class="flex h-full w-full flex-col items-center justify-center gap-6">
+        <div class="flex h-full w-full flex-col items-center justify-center gap-6">
             <img src="./logo.svg" alt="HackNet" class="max-w-4/5" />
-            <h2 class="text-xl">
-                HackNet 是我们用于培训下一代 HackHTU 建造者的实验室 Labs、会议
-                Sessions 和课程 Courses。
-            </h2>
-            <button
-                class="border-primary bg-primary text-background m-1 cursor-pointer rounded-xl border px-4 py-2 select-none hover:invert">
+            <p class="max-w-4/5 text-center text-xl">
+                HackNet 是我们为培训下一代 HackHTU 建造者而创建的实验室 Labs、会议 Sessions 和课程
+                Courses。
+            </p>
+            <a
+                :href="GITHUB_URL"
+                class="border-primary bg-primary text-background m-1 mt-5 cursor-pointer rounded-xl border px-4 py-2 text-3xl select-none hover:invert">
                 加入我们
-            </button>
+            </a>
         </div>
 
         <svg
             class="text-secondary absolute -z-50 h-full w-full will-change-transform"
             xmlns="http://www.w3.org/2000/svg">
             <defs>
-                <pattern
-                    id="bg"
-                    patternUnits="userSpaceOnUse"
-                    width="100"
-                    height="100">
+                <pattern id="bg" patternUnits="userSpaceOnUse" width="100" height="100">
                     <path
                         fill="currentColor"
                         d="M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm40 40c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z" />
@@ -70,10 +103,16 @@ import Footer from '@/components/Footer.vue';
     </header>
 
     <main>
-        <div></div>
-
-        <div>Lab</div>
+        <Lab />
+        <Session />
     </main>
+
+    <Collapse
+        v-for="value in collapses"
+        :key="value.title"
+        :title="value.title"
+        :content="value.content"
+        class="ld:max-w-3/5 mx-auto my-5 max-w-4/5" />
 
     <Footer />
 </template>

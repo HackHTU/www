@@ -9,9 +9,8 @@
     --color-background: light-dark(#fafafa, #171717); /* Background color */
 
     --font-sans:
-        'MiSans VF', 'MiSans', ui-sans-serif, system-ui, sans-serif,
-        'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
-        'Noto Color Emoji';
+        'MiSans VF', 'MiSans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+        'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
 :root {

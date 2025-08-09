@@ -9,10 +9,7 @@ const isShowPreview = ref(false);
 </script>
 <template>
     <div class="relative h-full w-full">
-        <video
-            :src="src"
-            class="h-full w-full object-cover"
-            @click="isShowPreview = true"></video>
+        <video :src="src" class="h-full w-full object-cover" @click="isShowPreview = true"></video>
 
         <Teleport to="body">
             <div
@@ -26,12 +23,7 @@ const isShowPreview = ref(false);
                         controls
                         autoplay
                         class="max-h-full max-w-full object-contain"></video>
-                    <a
-                        class="absolute top-4 left-4 cursor-pointer"
-                        :href="src"
-                        download>
-                        下载
-                    </a>
+                    <a class="absolute top-4 left-4 cursor-pointer" :href="src" download> 下载 </a>
                     <button
                         class="absolute top-4 right-4 cursor-pointer"
                         @click="isShowPreview = false">
