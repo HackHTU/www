@@ -23,6 +23,20 @@ export default tseslint.config(
     {
         rules: {
             'vue/multi-word-component-names': 'off',
+            'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
         },
-    }
+    },
+    {
+        files: ['**/*.vue'],
+        languageOptions: { parserOptions: { parser: tseslint.parser } },
+    },
+
+    /* ESLint and Prettier Configuration */
+    eslintConfigPrettier,
+    {
+        rules: {
+            'vue/multi-word-component-names': 'off',
+            'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+        },
+    },
 );

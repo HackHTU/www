@@ -59,10 +59,13 @@ onMounted(() => {
                     >
                 </div>
             </div>
-            <div class="ipad-frame inline-block bg-contain bg-center bg-no-repeat">
+
+            <div
+                class="ipad-frame w-100 aspect-[2/1] overflow-hidden">
                 <img
-                    class="h-full w-full rounded-md md:rounded-2xl"
-                    src="data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='512' height='384' fill='none' viewBox='0 0 512 384'%3e%3cpath fill='gray' d='M0 0h512v384H0z'/%3e%3c/svg%3e" />
+                    class="h-full w-full rounded-md md:rounded-3xl"
+                    :src="screenshots[0].src"
+                    :alt="screenshots[0].alt" />
             </div>
         </div>
 
@@ -109,10 +112,11 @@ onMounted(() => {
     <div
         id="screenshots"
         class="relative flex h-dvh w-full items-center justify-center overflow-hidden will-change-transform select-none">
+        <!-- screenshots -->
         <div
             v-for="screenshot in screenshots"
             :key="screenshot.src"
-            class="ipad-frame absolute bottom-1/5 max-h-3/5 overflow-hidden">
+            class="ipad-frame absolute bottom-1/5 h-[60vh] overflow-hidden">
             <img
                 class="h-full rounded-md md:rounded-3xl"
                 :src="screenshot.src"

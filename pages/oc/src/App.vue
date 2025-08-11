@@ -1,6 +1,18 @@
 <script setup lang="ts">
 import Footer from '@/components/Footer.vue';
 import Nav from '@/components/Nav.vue';
+
+import MMD from '@/components/MMD.vue';
+
+// MMD model and animation URLs
+const modelUrl = '/src/assets/mmd/miku/miku_v2.pmd';
+const vmdUrls = ['/src/assets/mmd/vmds/wavefile_v2.vmd'];
+const audioUrl = '/src/assets/mmd/audios/wavefile_short.mp3';
+
+const initialPosition = {
+    x: 20,
+    y: window.innerHeight - 420,
+};
 </script>
 
 <template>
@@ -13,4 +25,13 @@ import Nav from '@/components/Nav.vue';
     <main class="grid auto-rows-[20em] grid-cols-2 gap-4 p-4 xl:grid-cols-4"></main>
 
     <Footer />
+
+    <MMD
+        :model-url="modelUrl"
+        :vmd-urls="vmdUrls"
+        :audio-url="audioUrl"
+        title="MMD Widget"
+        :width="200"
+        :height="400"
+        :initial-position="initialPosition" />
 </template>
