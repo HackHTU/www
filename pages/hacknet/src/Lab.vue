@@ -8,6 +8,6 @@ const contents = [];
 <template>
     <Gallery
         :gallery-items="contents"
-        title="Lab"
+        title="Labs"
         description="我们一直在探索创新，这些是我们的最近进展。" />
 </template>

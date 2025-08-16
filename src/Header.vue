@@ -25,18 +25,18 @@ let screenshots = reactive<[Screenshot, Screenshot, Screenshot, Screenshot, Scre
 
 onMounted(() => {
     gsap.registerPlugin(ScrollTrigger);
+    const phone = window.matchMedia('(max-width: 640px)').matches;
     const timeline = gsap.timeline({
         scrollTrigger: {
             trigger: '#screenshots',
             start: 'top bottom',
             end: 'top 70%',
             scrub: 0.9,
-            markers: true,
         },
     });
 
     timeline.from('img.ipad-frame:nth-child(3)', {
-        y: -400,
+        y: phone ? '-100dvh' : '-40dvh',
         width: '80dvw',
         height: 'auto',
     });
