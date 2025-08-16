@@ -5,9 +5,10 @@ import Nav from '@/components/Nav.vue';
 import MMD from '@/components/MMD.vue';
 
 // MMD model and animation URLs
-const modelUrl = '/src/assets/mmd/miku/miku_v2.pmd';
-const vmdUrls = ['/src/assets/mmd/vmds/wavefile_v2.vmd'];
-const audioUrl = '/src/assets/mmd/audios/wavefile_short.mp3';
+// import modelUrl from '@/assets/mmd/LUNA/model.pmd?raw';
+const modelUrl = '/mmd/LUNA/model.pmx';
+const vmdUrls = ['/mmd/vmds/wavefile_v2.vmd'];
+const audioUrl = '/mmd/audios/wavefile_short.mp3';
 
 const initialPosition = {
     x: 20,

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
 import { onMounted, reactive } from 'vue';
 
 interface Screenshot {
@@ -23,28 +24,48 @@ let screenshots = reactive<[Screenshot, Screenshot, Screenshot, Screenshot, Scre
 ]);
 
 onMounted(() => {
-    // Set initial rotation for each iPad screenshot
-    const ipads = document.querySelectorAll('#screenshots .ipad-frame');
+    gsap.registerPlugin(ScrollTrigger);
+    const timeline = gsap.timeline({
+        scrollTrigger: {
+            trigger: '#screenshots',
+            start: 'top bottom',
+            end: 'top 70%',
+            scrub: 0.9,
+            markers: true,
+        },
+    });
 
-    ipads.forEach((ipad, index) => {
-        const initialRotation = index * 72; // 0, 72, 144, 216, 288deg
+    timeline.from('img.ipad-frame:nth-child(3)', {
+        y: -400,
+        width: '80dvw',
+        height: 'auto',
+    });
 
-        gsap.set(ipad, { rotation: initialRotation });
+    timeline.eventCallback('onComplete', () => {
+        // Set initial rotation for each iPad screenshot
+        const ipads = document.querySelectorAll('#screenshots .ipad-frame');
+        document.querySelector('#screenshots')?.classList.add('overflow-hidden');
 
-        gsap.to(ipad, {
-            rotation: initialRotation + 360,
-            duration: 20,
-            ease: 'none',
-            repeat: -1,
+        ipads.forEach((ipad, index) => {
+            const initialRotation = index * 72; // 0, 72, 144, 216, 288deg
+
+            gsap.set(ipad, { rotation: initialRotation });
+
+            gsap.to(ipad, {
+                rotation: initialRotation + 360,
+                duration: 20,
+                ease: 'none',
+                repeat: -1,
+                delay: 0.1,
+            });
         });
     });
 });
 </script>
 <template>
-    <header class="relative flex h-dvh w-full items-center justify-center">
-        <div
-            class="mx-10 flex w-full flex-wrap content-center items-center justify-center gap-20 xl:flex-nowrap">
-            <div class="flex flex-col gap-2 font-serif font-bold select-none">
+    <header class="relative flex h-dvh w-full items-start text-center">
+        <div class="mx-10 flex w-full items-center justify-center gap-20 xl:flex-nowrap">
+            <div class="mt-30 flex flex-col gap-2 font-serif font-bold select-none">
                 <h1 class="text-primary text-4xl lg:text-7xl/20">
                     Building <br />
                     <span class="text-theme text-shadow-lg">The Best Place</span><br />
@@ -59,19 +80,11 @@ onMounted(() => {
                     >
                 </div>
             </div>
-
-            <div
-                class="ipad-frame w-100 aspect-[2/1] overflow-hidden">
-                <img
-                    class="h-full w-full rounded-md md:rounded-3xl"
-                    :src="screenshots[0].src"
-                    :alt="screenshots[0].alt" />
-            </div>
         </div>
 
         <!-- Direction -->
         <div
-            class="bg-background border-secondary absolute bottom-2 animate-pulse rounded-xl border p-2 shadow-lg">
+            class="bg-background border-secondary absolute bottom-2 left-1/2 -translate-x-1/2 animate-pulse rounded-xl border p-2 shadow-lg">
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="30"
@@ -111,17 +124,15 @@ onMounted(() => {
 
     <div
         id="screenshots"
-        class="relative flex h-dvh w-full items-center justify-center overflow-hidden will-change-transform select-none">
+        class="relative flex h-dvh w-full items-center justify-center will-change-transform select-none">
         <!-- screenshots -->
-        <div
+
+        <img
             v-for="screenshot in screenshots"
             :key="screenshot.src"
-            class="ipad-frame absolute bottom-1/5 h-[60vh] overflow-hidden">
-            <img
-                class="h-full rounded-md md:rounded-3xl"
-                :src="screenshot.src"
-                :alt="screenshot.alt" />
-        </div>
+            class="ipad-frame absolute bottom-1/5 aspect-video h-120 overflow-hidden rounded-3xl"
+            :src="screenshot.src"
+            :alt="screenshot.alt" />
 
         <div class="absolute bottom-10 z-10 flex flex-col items-center justify-center gap-4">
             <a
@@ -148,9 +159,5 @@ onMounted(() => {
 <style lang="css" scoped>
 .ipad-frame {
     transform-origin: 50% 250%;
-}
-
-#screenshots {
-    mask: linear-gradient(to 20%, transparent, black);
 }
 </style>

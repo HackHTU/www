@@ -500,13 +500,13 @@ onUnmounted(() => {
         class="shadow-primary fixed z-50 overflow-hidden rounded-lg border bg-neutral-500/20 shadow-xs backdrop-blur-xs select-none">
         <header
             aria-label="Drag widget"
-            class="bg-accent/60 cursor-grab flex items-center gap-2 rounded-t-lg border-b px-3 py-2 active:cursor-grabbing"
+            class="bg-accent/60 flex cursor-grab items-center gap-2 rounded-t-lg border-b px-3 py-2 active:cursor-grabbing"
             @pointerdown="startDrag">
             <h2 class="text-foreground truncate text-sm font-medium">
                 {{ title }}
             </h2>
 
-            <span class="text-xs text-foreground/70">Beta</span>
+            <span class="text-foreground/70 text-xs">Beta</span>
         </header>
         <main class="h-[calc(100%-44px)] w-full">
             <canvas
