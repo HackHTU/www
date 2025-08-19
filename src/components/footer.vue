@@ -38,7 +38,14 @@ const MAIL = import.meta.env.VITE_MAIL;
                         >师韵</a
                     >
                 </li>
-                <li><span class="align-super text-xs opacity-30">加入链接</span></li>
+                <li>
+                    <span class="align-super text-xs opacity-30"
+                        ><a
+                            href="mailto:hackhtu@proton.me?subject=%E5%85%B3%E4%BA%8E%E3%80%8CYOUR_APP_NAME%E3%80%8D%E4%B8%8E%E8%B4%B5%E7%AB%99%E7%9A%84%E5%90%88%E4%BD%9C%E6%84%8F%E5%90%91&body=%E8%AF%B7%E5%A1%AB%E5%86%99%E4%BD%A0%E7%9A%84%E9%93%BE%E6%8E%A5%2F%E8%81%94%E7%B3%BB%E6%96%B9%E5%BC%8F%2F%E6%98%AF%E5%90%A6%E4%B8%BA%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE"
+                            >加入链接</a
+                        ></span
+                    >
+                </li>
             </ul>
             <ul class="space-y-1">
                 <li class="text-lg font-bold">资源</li>

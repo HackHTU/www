@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import { onMounted, reactive } from 'vue';
+import { onMounted, reactive, useTemplateRef } from 'vue';
 
 interface Screenshot {
     src: string;
@@ -23,6 +23,8 @@ let screenshots = reactive<[Screenshot, Screenshot, Screenshot, Screenshot, Scre
     { src: screenshot5, alt: 'Screenshot 5' },
 ]);
 
+let headerText = useTemplateRef("header-text")
+
 onMounted(() => {
     gsap.registerPlugin(ScrollTrigger);
     const phone = window.matchMedia('(max-width: 640px)').matches;
@@ -32,6 +34,7 @@ onMounted(() => {
             start: 'top bottom',
             end: 'top 70%',
             scrub: 0.9,
+            once: true,
         },
     });
 
@@ -42,6 +45,13 @@ onMounted(() => {
     });
 
     timeline.eventCallback('onComplete', () => {
+        gsap.to(headerText.value, {
+            y: 200,
+            duration: 0.5,
+            ease: 'power3.out',
+        });
+
+
         // Set initial rotation for each iPad screenshot
         const ipads = document.querySelectorAll('#screenshots .ipad-frame');
         document.querySelector('#screenshots')?.classList.add('overflow-hidden');
@@ -65,7 +75,7 @@ onMounted(() => {
 <template>
     <header class="relative flex h-dvh w-full items-start text-center">
         <div class="mx-10 flex w-full items-center justify-center gap-20 xl:flex-nowrap">
-            <div class="mt-30 flex flex-col gap-2 font-serif font-bold select-none">
+            <div ref="header-text" class="mt-30 flex flex-col gap-2 font-serif font-bold select-none">
                 <h1 class="text-primary text-4xl lg:text-7xl/20">
                     Building <br />
                     <span class="text-theme text-shadow-lg">The Best Place</span><br />
