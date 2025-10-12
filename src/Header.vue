@@ -3,27 +3,24 @@ import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { onMounted, reactive, useTemplateRef } from 'vue';
 
-interface Screenshot {
-    src: string;
-    alt: string;
-}
-
-import screenshot1 from './assets/screenshots/image.png';
-import screenshot2 from './assets/screenshots/image.png';
-import screenshot3 from './assets/screenshots/image.png';
-import screenshot4 from './assets/screenshots/image.png';
-import screenshot5 from './assets/screenshots/image.png';
+import screenshot1 from './assets/screenshots/shot1.png';
+import screenshot2 from './assets/screenshots/shot2.png';
+import screenshot3 from './assets/screenshots/shot3.png';
+import screenshot4 from './assets/screenshots/shot4.png';
+import screenshot5 from './assets/screenshots/shot5.png';
 
 // Must be 5 screenshots to match the original design
-let screenshots = reactive<[Screenshot, Screenshot, Screenshot, Screenshot, Screenshot]>([
-    { src: screenshot1, alt: 'Screenshot 1' },
-    { src: screenshot2, alt: 'Screenshot 2' },
-    { src: screenshot3, alt: 'Screenshot 3' },
-    { src: screenshot4, alt: 'Screenshot 4' },
-    { src: screenshot5, alt: 'Screenshot 5' },
-]);
+let screenshots = reactive(
+    [
+        { src: screenshot1, alt: 'Screenshot 1' },
+        { src: screenshot2, alt: 'Screenshot 2' },
+        { src: screenshot3, alt: 'Screenshot 3' },
+        { src: screenshot4, alt: 'Screenshot 4' },
+        { src: screenshot5, alt: 'Screenshot 5' },
+    ].sort(() => Math.random() - 0.5)
+);
 
-let headerText = useTemplateRef("header-text")
+let headerText = useTemplateRef('header-text');
 
 onMounted(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -39,7 +36,7 @@ onMounted(() => {
     });
 
     timeline.from('img.ipad-frame:nth-child(3)', {
-        y: phone ? '-100dvh' : '-40dvh',
+        y: phone ? '-100dvh' : '-60dvh',
         width: '80dvw',
         height: 'auto',
     });
@@ -47,10 +44,11 @@ onMounted(() => {
     timeline.eventCallback('onComplete', () => {
         gsap.to(headerText.value, {
             y: 200,
+            width: 'auto',
+            height: 'auto',
             duration: 0.5,
             ease: 'power3.out',
         });
-
 
         // Set initial rotation for each iPad screenshot
         const ipads = document.querySelectorAll('#screenshots .ipad-frame');
@@ -75,7 +73,9 @@ onMounted(() => {
 <template>
     <header class="relative flex h-dvh w-full items-start text-center">
         <div class="mx-10 flex w-full items-center justify-center gap-20 xl:flex-nowrap">
-            <div ref="header-text" class="mt-30 flex flex-col gap-2 font-serif font-bold select-none">
+            <div
+                ref="header-text"
+                class="mt-30 flex flex-col gap-2 font-serif font-bold select-none">
                 <h1 class="text-primary text-4xl lg:text-7xl/20">
                     Building <br />
                     <span class="text-theme text-shadow-lg">The Best Place</span><br />
@@ -140,7 +140,7 @@ onMounted(() => {
         <img
             v-for="screenshot in screenshots"
             :key="screenshot.src"
-            class="ipad-frame absolute bottom-1/5 aspect-video h-120 overflow-hidden rounded-3xl"
+            class="ipad-frame border-secondary/60 absolute bottom-1/5 aspect-video h-120 overflow-hidden rounded-3xl border-20 shadow-lg"
             :src="screenshot.src"
             :alt="screenshot.alt" />
 

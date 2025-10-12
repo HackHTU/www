@@ -118,19 +118,23 @@ onMounted(() => {
 <template>
     <div class="w-full">
         <!-- 两列 (默认)，md 及以上 4 列 -->
-        <div class="grid grid-cols-2 gap-2 md:grid-cols-4 auto-rows-[20em]">
+        <div class="grid grid-flow-row-dense grid-cols-2 gap-3 rounded-xl md:grid-cols-4 md:gap-4">
             <div
                 v-for="(item, idx) in items"
                 :key="item.src + '-' + idx"
                 :class="[
                     item.isWide ? 'md:col-span-2' : 'md:col-span-1',
                     'col-span-1',
-                    'h-full overflow-hidden rounded',
+                    'relative h-full overflow-hidden rounded-xl border-2 shadow-lg transition-all duration-300',
+                    'border-primary/20 from-background to-primary/5 bg-gradient-to-br',
+                    'hover:border-primary/40 hover:shadow-primary/10 hover:scale-102 hover:shadow-xl',
                 ]">
                 <component
                     :is="item.type === 'photo' ? ImageComp : VideoComp"
                     :src="item.src"
-                    :alt="item.alt || ''" />
+                    :alt="item.alt || ''"
+                    class="transition-transform duration-300" />
+
             </div>
         </div>
     </div>

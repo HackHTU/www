@@ -24,7 +24,6 @@ const keywords: Array<{ text: string; color: string }> = [
     { text: '开放设计稿', color: '#9B59B6' },
     { text: 'Telegram 群组', color: '#3498DB' },
     { text: 'Discord 群组', color: '#E74C3C' },
-    { text: 'ChatRoom 聊天室', color: '#1ABC9C' },
     { text: 'LUNA 二创', color: '#C1C40F' },
     { text: '关于与致谢', color: '#34495E' },
     { text: 'HackNet', color: '#95A5A6' },

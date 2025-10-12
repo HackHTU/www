@@ -28,10 +28,12 @@ const isShowTitle = props.title !== undefined && props.title.length > 0;
                 <li v-if="!isShowTitle"><a href="/pages/about/">关于</a></li>
                 <li v-if="!isShowTitle"><a href="/pages/hacknet/">HackNet</a></li>
                 <li>
-                    <div
-                        class="border-primary text-primary bg-background m-1 cursor-pointer rounded-xl border px-2 py-1 font-semibold select-none hover:invert">
-                        Log In
-                    </div>
+                    <a href="https://app.htu.me">
+                        <div
+                            class="border-primary text-primary bg-background m-1 cursor-pointer rounded-xl border px-2 py-1 font-semibold select-none hover:invert">
+                            Log In
+                        </div>
+                    </a>
                 </li>
             </ul>
         </div>
