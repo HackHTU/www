@@ -8,7 +8,7 @@ const isShowTitle = props.title !== undefined && props.title.length > 0;
 <template>
     <nav class="fixed top-1 z-50 flex w-full justify-center text-nowrap">
         <div
-            class="text-background dark:text-primary mx-2 flex w-200 max-w-full items-center justify-between rounded-2xl border border-neutral-300 bg-neutral-900 px-2 select-none">
+            class="text-background dark:text-primary mx-2 flex w-180 max-w-full items-center justify-between rounded-2xl border border-neutral-300 bg-neutral-900 px-2 select-none">
             <a href="/">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"

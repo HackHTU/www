@@ -8,7 +8,7 @@ export type MediaItem = {
 
 import goodle1 from '@/assets/luna/goodle/goodle_web.mp4?url';
 
-import yrsdmVideo from '@/assets/luna/yrsdm/yrsdm.mp4?url';
+import yrsdmVideo from '@/assets/luna/yrsdm/yrsdm_web.mp4?url';
 
 // import posterHandwrite from '@/assets/luna/poster/handwrite.png?url';
 import posterCat from '@/assets/luna/poster/cat-post.png?url';

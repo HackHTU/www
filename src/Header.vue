@@ -36,7 +36,7 @@ onMounted(() => {
     });
 
     timeline.from('img.ipad-frame:nth-child(3)', {
-        y: phone ? '-100dvh' : '-60dvh',
+        y: phone ? '-100dvh' : '-50dvh',
         width: '80dvw',
         height: 'auto',
     });
@@ -55,7 +55,10 @@ onMounted(() => {
         document.querySelector('#screenshots')?.classList.add('overflow-hidden');
 
         ipads.forEach((ipad, index) => {
-            const initialRotation = index * 72; // 0, 72, 144, 216, 288deg
+            ipad.classList.remove('opacity-0');
+            ipad.classList.add('opacity-100');
+
+            const initialRotation = ((index - 2) % 5) * 72; // 0, 72, 144, 216, 288deg
 
             gsap.set(ipad, { rotation: initialRotation });
 
@@ -138,14 +141,16 @@ onMounted(() => {
         <!-- screenshots -->
 
         <img
-            v-for="screenshot in screenshots"
+            v-for="(screenshot, index) in screenshots"
             :key="screenshot.src"
             class="ipad-frame border-secondary/60 absolute bottom-1/5 aspect-video h-120 overflow-hidden rounded-3xl border-20 shadow-lg"
+            :class="[index === 2 ? 'opacity-100' : 'opacity-0']"
             :src="screenshot.src"
             :alt="screenshot.alt" />
 
         <div class="absolute bottom-10 z-10 flex flex-col items-center justify-center gap-4">
             <a
+                href="https://app.htu.me"
                 class="border-secondary decoration-theme bg-primary text-background hover: m-1 cursor-pointer rounded-xl border-4 px-4 py-3 text-3xl underline decoration-wavy underline-offset-8 select-none">
                 在线体验
             </a>
