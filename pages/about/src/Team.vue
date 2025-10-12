@@ -13,7 +13,7 @@
                         <img :src="p.img" alt="p.name" class="h-full w-full object-cover" />
                     </div>
 
-                    <div class="flex flex-col gap-1 group-hover:text-right p-2">
+                    <div class="flex flex-col gap-1 p-2 group-hover:text-right">
                         <h3
                             class="text-2xl font-semibold transition-all group-hover:mt-20 group-hover:text-6xl group-hover:text-shadow-[2px_2px_0px_#22c55e]">
                             {{ p.name }}

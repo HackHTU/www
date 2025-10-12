@@ -50,7 +50,7 @@ const GITHUB_URL = import.meta.env.VITE_GITHUB_URL;
             class="contents"
             target="_blank"
             rel="noopener noreferrer">
-            <div class="card border-primary/10 border h-80">
+            <div class="card border-primary/10 h-80 border">
                 <div class="card-inner">
                     <div class="card-front flex items-center justify-center p-6">
                         <span class="text-2xl font-bold">开发者</span>
@@ -59,7 +59,7 @@ const GITHUB_URL = import.meta.env.VITE_GITHUB_URL;
                 </div>
             </div>
 
-            <div class="card border-primary/10 border h-80">
+            <div class="card border-primary/10 h-80 border">
                 <div class="card-inner">
                     <div class="card-front flex items-center justify-center p-6">
                         <span class="text-2xl font-bold">设计师</span>
@@ -68,7 +68,7 @@ const GITHUB_URL = import.meta.env.VITE_GITHUB_URL;
                 </div>
             </div>
 
-            <div class="card border-primary/10 border h-80">
+            <div class="card border-primary/10 h-80 border">
                 <div class="card-inner">
                     <div class="card-front flex items-center justify-center p-6">
                         <span class="text-2xl font-bold">插画师</span>
@@ -77,7 +77,7 @@ const GITHUB_URL = import.meta.env.VITE_GITHUB_URL;
                 </div>
             </div>
 
-            <div class="card border-primary/10 border h-80">
+            <div class="card border-primary/10 h-80 border">
                 <div class="card-inner">
                     <div class="card-front flex items-center justify-center p-6">
                         <span class="text-2xl font-bold">或者你...</span>

@@ -1,265 +1,284 @@
 <!doctype html>
 <html lang="zh-CN">
-
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>404 - 页面未找到</title>
-    <style>
-        :root {
-            --bg-main: #0f7ab0;
-            /* bright blue */
-            --bg-accent: #f1e1b8;
-            /* cream */
-            --deep: #0b5b7a;
-            /* deeper blue */
-            --muted: #2e9aa8;
-            --accent-red: #b9372a;
-            --glass: rgba(255, 255, 255, 0.06);
-            --text: #f3e7c6;
-            --shadow: rgba(0, 0, 0, 0.18);
-        }
-
-        @media (prefers-color-scheme: dark) {
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>404 - 页面未找到</title>
+        <style>
             :root {
-                --bg-main: #033a56;
-                /* darker but still vivid */
-                --bg-accent: #0f1720;
-                /* near-black for cream strips to stand out */
-                --deep: #022b3a;
-                --muted: #1f7b84;
-                --accent-red: #ff6b6b;
-                --glass: rgba(255, 255, 255, 0.03);
-                --text: #ffeeb9;
-                --shadow: rgba(0, 0, 0, 0.6);
+                --bg-main: #0f7ab0;
+                /* bright blue */
+                --bg-accent: #f1e1b8;
+                /* cream */
+                --deep: #0b5b7a;
+                /* deeper blue */
+                --muted: #2e9aa8;
+                --accent-red: #b9372a;
+                --glass: rgba(255, 255, 255, 0.06);
+                --text: #f3e7c6;
+                --shadow: rgba(0, 0, 0, 0.18);
             }
-        }
 
-        * {
-            box-sizing: border-box;
-        }
+            @media (prefers-color-scheme: dark) {
+                :root {
+                    --bg-main: #033a56;
+                    /* darker but still vivid */
+                    --bg-accent: #0f1720;
+                    /* near-black for cream strips to stand out */
+                    --deep: #022b3a;
+                    --muted: #1f7b84;
+                    --accent-red: #ff6b6b;
+                    --glass: rgba(255, 255, 255, 0.03);
+                    --text: #ffeeb9;
+                    --shadow: rgba(0, 0, 0, 0.6);
+                }
+            }
 
-        html,
-        body {
-            height: 100%;
-            margin: 0;
-            font-family:
-                Inter,
-                system-ui,
-                -apple-system,
-                "Segoe UI",
-                Roboto,
-                "Helvetica Neue",
-                Arial;
-        }
+            * {
+                box-sizing: border-box;
+            }
 
-        .stage {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(180deg,
+            html,
+            body {
+                height: 100%;
+                margin: 0;
+                font-family:
+                    Inter,
+                    system-ui,
+                    -apple-system,
+                    'Segoe UI',
+                    Roboto,
+                    'Helvetica Neue',
+                    Arial;
+            }
+
+            .stage {
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: linear-gradient(
+                    180deg,
                     var(--bg-main) 0%,
-                    color-mix(in srgb, var(--bg-main) 80%, black 20%) 100%);
-            padding: 2.5rem;
-            user-select: none;
-        }
+                    color-mix(in srgb, var(--bg-main) 80%, black 20%) 100%
+                );
+                padding: 2.5rem;
+                user-select: none;
+            }
 
-        .card {
-            width: 100%;
-            max-width: 1000px;
-            background: linear-gradient(180deg,
+            .card {
+                width: 100%;
+                max-width: 1000px;
+                background: linear-gradient(
+                    180deg,
                     rgba(255, 255, 255, 0.02),
-                    rgba(255, 255, 255, 0.01));
-            border-radius: 48px;
-            overflow: hidden;
-            display: grid;
-            grid-template-columns: 60px 1fr 60px;
-            align-items: center;
-            position: relative;
-            box-shadow: 0 20px 50px var(--shadow);
-        }
-
-        /* left cream vertical */
-        .side-cream {
-            background: var(--bg-accent);
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .side-cream .rot {
-            writing-mode: vertical-rl;
-            transform: rotate(180deg);
-            color: var(--accent-red);
-            font-weight: 700;
-            font-size: 14px;
-        }
-
-        /* center area */
-        .center {
-            position: relative;
-            padding: 6rem 4rem;
-            text-align: center;
-            color: var(--text);
-        }
-
-        /* giant pixel 404 */
-        .big404 {
-            text-shadow:
-                0 6px 0 rgba(0, 0, 0, 0.06),
-                0 18px 40px rgba(0, 0, 0, 0.25);
-            max-width: 80%;
-            margin: 0 0 1rem 0;
-        }
-
-        .subtitle {
-            font-weight: 700;
-            font-size: 20px;
-            opacity: 0.95;
-            margin-bottom: 2.2rem;
-        }
-
-        .controls {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 14px 48px;
-            border-radius: 40px;
-            border: 3px solid var(--bg-accent);
-            background: var(--bg-main);
-            color: var(--text);
-            text-decoration: none;
-            font-weight: 700;
-            transition: all 0.18s ease;
-            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12) inset;
-        }
-
-        .btn:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 28px 40px rgba(0, 0, 0, 0.18) inset;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.04));
-        }
-
-        /* decorative wave at bottom */
-        .wave {
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            width: calc(100% + 80px);
-            height: 140px;
-            pointer-events: none;
-            transform: translateY(40px);
-        }
-
-        /* small corner rounding and left bottom curved cut similar to image */
-        .card::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 160px;
-            height: 160px;
-            border-top-left-radius: 48px;
-            background: transparent;
-            z-index: 2;
-        }
-
-        /* responsive adjustments */
-        @media (max-width: 1000px) {
-            .big404 {
-                font-size: 96px;
+                    rgba(255, 255, 255, 0.01)
+                );
+                border-radius: 48px;
+                overflow: hidden;
+                display: grid;
+                grid-template-columns: 60px 1fr 60px;
+                align-items: center;
+                position: relative;
+                box-shadow: 0 20px 50px var(--shadow);
             }
 
+            /* left cream vertical */
+            .side-cream {
+                background: var(--bg-accent);
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+            }
+
+            .side-cream .rot {
+                writing-mode: vertical-rl;
+                transform: rotate(180deg);
+                color: var(--accent-red);
+                font-weight: 700;
+                font-size: 14px;
+            }
+
+            /* center area */
             .center {
-                padding: 4rem 2.5rem;
+                position: relative;
+                padding: 6rem 4rem;
+                text-align: center;
+                color: var(--text);
             }
 
-            .card {
-                grid-template-columns: 50px 1fr 50px;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .card {
-                grid-template-columns: 1fr;
-                border-radius: 28px;
-            }
-
-            .side-cream,
-            .side-blue {
-                display: none;
-            }
-
-            .center {
-                padding: 3rem 1.5rem;
-            }
-
+            /* giant pixel 404 */
             .big404 {
-                font-size: 56px;
+                text-shadow:
+                    0 6px 0 rgba(0, 0, 0, 0.06),
+                    0 18px 40px rgba(0, 0, 0, 0.25);
+                max-width: 80%;
+                margin: 0 0 1rem 0;
             }
 
             .subtitle {
-                font-size: 16px;
+                font-weight: 700;
+                font-size: 20px;
+                opacity: 0.95;
+                margin-bottom: 2.2rem;
+            }
+
+            .controls {
+                display: flex;
+                gap: 2rem;
+                justify-content: center;
+                flex-wrap: wrap;
             }
 
             .btn {
-                padding: 12px 28px;
+                padding: 14px 48px;
+                border-radius: 40px;
+                border: 3px solid var(--bg-accent);
+                background: var(--bg-main);
+                color: var(--text);
+                text-decoration: none;
+                font-weight: 700;
+                transition: all 0.18s ease;
+                box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12) inset;
             }
 
+            .btn:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 28px 40px rgba(0, 0, 0, 0.18) inset;
+                background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.04));
+            }
+
+            /* decorative wave at bottom */
             .wave {
-                height: 110px;
-                transform: translateY(18px);
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                width: calc(100% + 80px);
+                height: 140px;
+                pointer-events: none;
+                transform: translateY(40px);
             }
-        }
 
-        /* accessibility focus styles */
-        .btn:focus {
-            outline: 3px solid rgba(255, 255, 255, 0.12);
-            outline-offset: 4px;
-        }
-    </style>
-</head>
+            /* small corner rounding and left bottom curved cut similar to image */
+            .card::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 160px;
+                height: 160px;
+                border-top-left-radius: 48px;
+                background: transparent;
+                z-index: 2;
+            }
 
-<body>
-    <main class="stage" role="main">
-        <section class="card" aria-labelledby="title">
-            <aside class="side-cream" aria-hidden="true">
-                <div class="rot">404 - Not Found</div>
-            </aside>
+            /* responsive adjustments */
+            @media (max-width: 1000px) {
+                .big404 {
+                    font-size: 96px;
+                }
 
-            <div class="center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="big404" fill="none" viewBox="0 0 616 308">
-                    <path fill="#E9D8A6"
-                        d="M0 129h26v-26h25V77h26V52h26V26h51v128h26v26h-26v51h26v26H77v-26h26v-51H0v-51Zm51 0v25h52v-51H77v26H51Zm154 77V77h26V52h26V26h77v26h25v25h26v129h-26v25h-25v26h-77v-26h-26v-25h-26Zm52 0h25v25h26v-25h26V77h-26V52h-26v25h-25v129Zm51-77v25h-26v-25h26Zm103 0h25v-26h26V77h26V52h25V26h52v128h25v26h-25v51h25v26H488v-26h25v-51H411v-51Zm51 0v25h51v-51h-25v26h-26Z" />
-                </svg>
-                <p class="subtitle">糟糕，你要找的页面被我吃掉了</p>
-                <div class="controls">
-                    <a class="btn" href="/" role="button" aria-label="返回主页">返回主页</a>
-                    <a class="btn" href="https://github.com/HackHTU" role="button" aria-label="联系我们">联系我们</a>
+                .center {
+                    padding: 4rem 2.5rem;
+                }
+
+                .card {
+                    grid-template-columns: 50px 1fr 50px;
+                }
+            }
+
+            @media (max-width: 640px) {
+                .card {
+                    grid-template-columns: 1fr;
+                    border-radius: 28px;
+                }
+
+                .side-cream,
+                .side-blue {
+                    display: none;
+                }
+
+                .center {
+                    padding: 3rem 1.5rem;
+                }
+
+                .big404 {
+                    font-size: 56px;
+                }
+
+                .subtitle {
+                    font-size: 16px;
+                }
+
+                .btn {
+                    padding: 12px 28px;
+                }
+
+                .wave {
+                    height: 110px;
+                    transform: translateY(18px);
+                }
+            }
+
+            /* accessibility focus styles */
+            .btn:focus {
+                outline: 3px solid rgba(255, 255, 255, 0.12);
+                outline-offset: 4px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <main class="stage" role="main">
+            <section class="card" aria-labelledby="title">
+                <aside class="side-cream" aria-hidden="true">
+                    <div class="rot">404 - Not Found</div>
+                </aside>
+
+                <div class="center">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="big404"
+                        fill="none"
+                        viewBox="0 0 616 308">
+                        <path
+                            fill="#E9D8A6"
+                            d="M0 129h26v-26h25V77h26V52h26V26h51v128h26v26h-26v51h26v26H77v-26h26v-51H0v-51Zm51 0v25h52v-51H77v26H51Zm154 77V77h26V52h26V26h77v26h25v25h26v129h-26v25h-25v26h-77v-26h-26v-25h-26Zm52 0h25v25h26v-25h26V77h-26V52h-26v25h-25v129Zm51-77v25h-26v-25h26Zm103 0h25v-26h26V77h26V52h25V26h52v128h25v26h-25v51h25v26H488v-26h25v-51H411v-51Zm51 0v25h51v-51h-25v26h-26Z" />
+                    </svg>
+                    <p class="subtitle">糟糕，你要找的页面被我吃掉了</p>
+                    <div class="controls">
+                        <a class="btn" href="/" role="button" aria-label="返回主页">返回主页</a>
+                        <a
+                            class="btn"
+                            href="https://github.com/HackHTU"
+                            role="button"
+                            aria-label="联系我们"
+                            >联系我们</a
+                        >
+                    </div>
+
+                    <!-- wave svg -->
+                    <svg
+                        class="wave"
+                        viewBox="0 0 1200 180"
+                        preserveAspectRatio="none"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="g1" x1="0%" x2="100%" y1="0%" y2="0%">
+                                <stop offset="0%" stop-color="var(--muted)" stop-opacity="0.95" />
+                                <stop offset="100%" stop-color="var(--deep)" stop-opacity="0.95" />
+                            </linearGradient>
+                        </defs>
+                        <path
+                            d="M0,60 C150,120 350,0 600,60 C800,110 1000,70 1200,90 L1200 180 L0 180 Z"
+                            fill="url(#g1)"
+                            opacity="0.95"></path>
+                    </svg>
                 </div>
-
-                <!-- wave svg -->
-                <svg class="wave" viewBox="0 0 1200 180" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="g1" x1="0%" x2="100%" y1="0%" y2="0%">
-                            <stop offset="0%" stop-color="var(--muted)" stop-opacity="0.95" />
-                            <stop offset="100%" stop-color="var(--deep)" stop-opacity="0.95" />
-                        </linearGradient>
-                    </defs>
-                    <path d="M0,60 C150,120 350,0 600,60 C800,110 1000,70 1200,90 L1200 180 L0 180 Z" fill="url(#g1)"
-                        opacity="0.95"></path>
-                </svg>
-            </div>
-        </section>
-    </main>
-</body>
-
+            </section>
+        </main>
+    </body>
 </html>

@@ -134,7 +134,6 @@ onMounted(() => {
                     :src="item.src"
                     :alt="item.alt || ''"
                     class="transition-transform duration-300" />
-
             </div>
         </div>
     </div>
